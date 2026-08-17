@@ -1,0 +1,814 @@
+/* ==========================================================================
+   🍞 PEKÁRNA BEZ OBAV - HLAVNÍ STYLY
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. PROMĚNNÉ (Design Systém)
+   -------------------------------------------------------------------------- */
+:root {
+    /* Barvy */
+    --zlata-kura: #A65D14;     /* Hlavní akcentní barva */
+    --zlata-kura-hover: #8F4E0E; 
+    --tmavy-chleb: #4A332A;    /* Nadpisy a patička */
+    --kremova-svetla: #FBF9F6; /* Pozadí stránek */
+    --kremova-tmavsi: #F4EFE6; /* Pozadí sekce menu */
+    --text-bezny: #3A3A3A;     /* Běžný text */
+    --bila: #FFFFFF;
+    --chyba-cervena: #D63031;
+    
+    /* Typografie */
+    --font-nadpisy: 'Playfair Display', serif;
+    --font-text: 'Poppins', sans-serif;
+    
+    /* Layout */
+    --vyska-menu: 80px;        /* Proměnná pro výšku hlavičky */
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET A ZÁKLADNÍ NASTAVENÍ HTML/BODY
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    /* Plynulé odscrollování po kliknutí na odkaz v menu */
+    scroll-behavior: smooth;
+    /* Zajistí, aby se sekce nezastavila pod fixním menu, ale přesně pod ním */
+    scroll-padding-top: var(--vyska-menu); 
+}
+
+body {
+    font-family: var(--font-text);
+    background-color: var(--kremova-svetla);
+    color: var(--text-bezny);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased; /* Hezčí vykreslování písma */
+   /* PŘIDÁNO: Definitivní přilepení patičky dolů */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --------------------------------------------------------------------------
+   3. STRUKTURA A OBALY (Záchrana patičky a scrollování)
+   -------------------------------------------------------------------------- */
+/* Hlavní obal zamezující horizontálnímu scrollování a tlačící patičku dolů */
+.obal-stranky {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; 
+    width: 100%;
+}
+
+/* Hlavní obsah - natahuje se a tlačí patičku na dno */
+main {
+    flex: 1 0 auto; 
+    width: 100%;
+}
+
+/* Centrovací kontejner pro omezení šířky obsahu */
+.kontejner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   4. TYPOGRAFIE A GLOBÁLNÍ ELEMENTY
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4 {
+    font-family: var(--font-nadpisy);
+    color: var(--tmavy-chleb);
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.tlacitko {
+    display: inline-block;
+    background-color: var(--zlata-kura);
+    color: var(--bila);
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tlacitko:hover {
+    background-color: var(--zlata-kura-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(212, 140, 70, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   5. HLAVIČKA A NAVIGACE
+   -------------------------------------------------------------------------- */
+.navigace {
+    background-color: var(--bila);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: var(--vyska-menu);
+}
+
+.nav-obsah {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    font-family: var(--font-nadpisy);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav-odkazy {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-odkazy a {
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-odkazy a:hover {
+    color: var(--zlata-kura);
+}
+
+/* --------------------------------------------------------------------------
+   6. HERO SEKCE (Uvítání)
+   -------------------------------------------------------------------------- */
+.hero {
+    /* Původní gradient zůstává pro ztmavení, mění se jen cesta k url() */
+    background: linear-gradient(rgba(92, 64, 51, 0.8), rgba(92, 64, 51, 0.6)), 
+                url('../images/hero-pozadi.webp') center/cover;
+    height: 70vh;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--bila);
+    padding: 20px;
+}
+
+.hero h1 {
+    color: var(--bila);
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    font-weight: 300;
+}
+
+/* --------------------------------------------------------------------------
+   7. SEKCE: O NÁS
+   -------------------------------------------------------------------------- */
+.sekce-o-nas {
+    padding: 80px 0;
+    background-color: var(--kremova-svetla);
+}
+
+.o-nas-obsah {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.o-nas-obsah h2 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+}
+
+.o-nas-obsah p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.o-nas-ikony {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.ikona-box {
+    flex: 1;
+    min-width: 200px;
+}
+
+.ikona-box span {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.ikona-box h3 {
+    margin-bottom: 10px;
+    font-family: var(--font-text);
+}
+
+/* --------------------------------------------------------------------------
+   8. SEKCE: DNEŠNÍ MENU & PRODUKTY
+   -------------------------------------------------------------------------- */
+.sekce-menu {
+    background-color: var(--kremova-tmavsi);
+    padding: 80px 0;
+}
+
+.menu-hlavicka {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.menu-hlavicka h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+/* Vyhledávání a Filtry */
+.vyhledavani-kontejner {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.vyhledavani-input {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px 25px;
+    border: 2px solid #e0d5c1;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-family: var(--font-text);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.vyhledavani-input:focus {
+    border-color: var(--zlata-kura);
+    box-shadow: 0 4px 20px rgba(212, 140, 70, 0.15);
+}
+
+.filtry {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.filtr-btn {
+    background-color: var(--bila);
+    border: 2px solid var(--zlata-kura);
+    color: var(--zlata-kura);
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.filtr-btn:hover, .filtr-btn.aktivni {
+    background-color: var(--zlata-kura);
+    color: var(--bila);
+}
+
+/* Kategorie produktů */
+.kategorie-sekce {
+    margin-bottom: 50px;
+    animation: nabehKategorie 0.4s ease-out;
+}
+
+@keyframes nabehKategorie {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.kategorie-nadpis {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--zlata-kura);
+    display: inline-block;
+}
+
+.kategorie-pruh {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+/* Samotná karta produktu */
+.karta-peciva {
+    background-color: var(--bila);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border-top: 4px solid var(--kremova-svetla);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    width: 100%;
+}
+
+.karta-peciva:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    border-top-color: var(--zlata-kura);
+}
+
+.karta-obrazek {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--kremova-svetla);
+    transition: transform 0.4s ease;
+}
+
+.karta-peciva:hover .karta-obrazek {
+    transform: scale(1.05);
+}
+
+.karta-texty {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.karta-texty h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.karta-texty p {
+    font-size: 0.95rem;
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.cena {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--zlata-kura);
+    font-family: var(--font-nadpisy);
+}
+
+.hmotnost {
+    font-size: 0.85rem;
+    color: #555555;
+    display: block;
+    margin-top: 5px;
+}
+
+/* Zprávy API */
+.nacteni, .chyba {
+    text-align: center;
+    grid-column: 1 / -1;
+    font-style: italic;
+    padding: 40px 20px;
+}
+.chyba { color: var(--chyba-cervena); font-weight: bold; }
+
+/* --------------------------------------------------------------------------
+   9. DETAIL PRODUKTU (produkt-detail.html)
+   -------------------------------------------------------------------------- */
+.tlacitko-zpet {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-bezny);
+    font-weight: 500;
+    margin-bottom: 40px;
+    transition: color 0.3s ease;
+}
+
+.tlacitko-zpet:hover {
+    color: var(--zlata-kura);
+}
+
+.produkt-stranka-mrizka {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.produkt-kategorie {
+    display: inline-block;
+    background-color: var(--bila);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--zlata-kura);
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+}
+
+.produkt-info h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.produkt-cena {
+    font-family: var(--font-nadpisy);
+    font-size: 2.2rem;
+    color: var(--zlata-kura);
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.produkt-popis {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+}
+
+.box-alergeny {
+    background-color: #fff0f0;
+    border-left: 5px solid var(--chyba-cervena);
+    padding: 20px;
+    border-radius: 8px;
+    color: #c0392b;
+}
+
+/* --------------------------------------------------------------------------
+   10. FOTOGALERIE A LIGHTBOX
+   -------------------------------------------------------------------------- */
+.produkt-fotky {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hlavni-foto-obal {
+    position: relative;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: zoom-in;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.produkt-hlavni-foto {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    border: 3px solid var(--bila);
+    border-radius: 16px;
+    display: block;
+}
+
+.galerie-sipka {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    /* Pevné rozměry zaručí dokonalý kruh */
+    width: 48px; 
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    color: var(--tmavy-chleb);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.galerie-sipka:hover {
+    background: var(--zlata-kura);
+    color: var(--bila);
+}
+
+.galerie-sipka.vlevo { left: 15px; }
+.galerie-sipka.vpravo { right: 15px; }
+
+.galerie-nahledy {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.nahled-foto {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.nahled-foto:hover, .nahled-foto.aktivni {
+    opacity: 1;
+    border-color: var(--zlata-kura);
+}
+
+/* Lightbox overlay */
+.lightbox {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.zobrazeno {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.6);
+}
+
+.lightbox-zavrit {
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    color: var(--bila);
+    font-size: 45px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.lightbox-zavrit:hover { color: var(--zlata-kura); }
+
+.lightbox-sipka {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 50px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 20px;
+    z-index: 10000;
+}
+
+.lightbox-sipka:hover { 
+    color: var(--bila); 
+    transform: translateY(-50%) scale(1.1);
+}
+
+.lightbox-sipka.vlevo { left: 20px; }
+.lightbox-sipka.vpravo { right: 20px; }
+
+/* Skrytí šipek na mobilech, kde se často swajpuje, nebo jejich zmenšení */
+@media (max-width: 768px) {
+    .lightbox-sipka { font-size: 35px; padding: 10px; }
+    .lightbox-sipka.vlevo { left: 5px; }
+    .lightbox-sipka.vpravo { right: 5px; }
+}
+
+/* --------------------------------------------------------------------------
+   11. SEKCE: OTEVÍRACÍ DOBA
+   -------------------------------------------------------------------------- */
+.sekce-oteviraci-doba {
+    padding: 80px 0;
+    background-color: var(--bila);
+}
+
+.oteviraci-obsah {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.oteviraci-obsah h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.oteviraci-karta {
+    background-color: var(--kremova-svetla);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border-top: 4px solid var(--zlata-kura);
+    margin-top: 30px;
+}
+
+.seznam-doba {
+    list-style: none;
+}
+
+.seznam-doba li {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 0;
+    border-bottom: 1px dashed #d1c8b8;
+    font-size: 1.1rem;
+    color: var(--tmavy-chleb);
+}
+
+.seznam-doba li:last-child { border-bottom: none; }
+.seznam-doba strong { font-weight: 600; }
+.seznam-doba .zavreno, 
+.seznam-doba em,
+em { 
+    color: #555555; 
+    font-style: italic; 
+}
+
+/* --------------------------------------------------------------------------
+   12. PATIČKA (Odtlačená dolů díky flexboxu)
+   -------------------------------------------------------------------------- */
+.paticka {
+    background-color: var(--tmavy-chleb);
+    color: #e0d5c1;
+    padding: 60px 0 20px 0;
+    flex-shrink: 0; /* Zabrání zmenšení elementu */
+}
+
+.paticka-mrizka {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.paticka-sloupec h3 {
+    color: var(--bila);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.paticka-sloupec p { margin-bottom: 10px; }
+
+.mapa-kontejner {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 15px;
+}
+
+.mapa-kontejner iframe { display: block; }
+
+.paticka-spodek {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+   13. RESPONZIVITA A MOBILNÍ ZOBRAZENÍ
+   -------------------------------------------------------------------------- */
+
+/* Tablet */
+@media (max-width: 900px) {
+    .produkt-stranka-mrizka {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+    .nav-odkazy { display: none; }
+    
+    .hero h1 { font-size: 2.2rem; }
+    
+    .sekce-o-nas { padding: 50px 24px; }
+    .o-nas-ikony { flex-direction: column; gap: 40px; }
+    
+    .produkt-info h1 { font-size: 2.2rem; }
+    
+    .produkt-cena {
+        font-size: 1.8rem;
+        word-wrap: break-word; /* Zabrání dlouhým cenám rozbít stránku do boku */
+    }
+
+    .seznam-doba li {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .lightbox-zavrit {
+        top: 15px;
+        right: 20px;
+        font-size: 35px;
+    }
+
+    /* "Netflix" styl na mobilech pro karty produktů */
+    .kategorie-pruh {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding-bottom: 20px;
+        scrollbar-width: none; /* Skryje posuvník Firefox */
+        -ms-overflow-style: none; /* Skryje posuvník IE/Edge */
+        scroll-snap-type: x mandatory; 
+    }
+
+    .kategorie-pruh::-webkit-scrollbar { display: none; /* Skryje posuvník Chrome/Safari */ }
+
+    .karta-horizontalni {
+        min-width: 260px;
+        max-width: 260px;
+        flex-shrink: 0;
+        scroll-snap-align: start; 
+    }
+}
+
+/* ==========================================================================
+   14. SKELETON LOADERS A EMPTY STATES (Profesionální UX)
+   ========================================================================== */
+
+/* Skeleton animace - Simulace načítání obsahu */
+@keyframes skeleton-loading {
+    0% { background-color: #e2e2e2; }
+    100% { background-color: #f0f0f0; }
+}
+
+.skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+    border-radius: 8px;
+}
+
+.skeleton-karta {
+    background-color: var(--bila);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.skeleton-img { height: 220px; width: 100%; border-radius: 0; }
+.skeleton-texty { padding: 20px; display: flex; flex-direction: column; gap: 12px; height: 100%; }
+.skeleton-nadpis { height: 24px; width: 70%; margin-bottom: 10px; }
+.skeleton-odstavec { height: 14px; width: 100%; }
+.skeleton-odstavec.kratky { width: 80%; }
+.skeleton-cena { height: 28px; width: 40%; margin-top: auto; }
+
+/* Empty state - Stav "Nenalezeno" */
+.prazdny-stav {
+    text-align: center;
+    padding: 60px 20px;
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--bila);
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    border: 2px dashed #e0d5c1;
+}
+
+.prazdny-stav-ikona {
+    font-size: 3.5rem;
+    opacity: 0.6;
+    margin-bottom: 15px;
+    filter: grayscale(100%);
+}
+
+.prazdny-stav h3 {
+    font-size: 1.5rem;
+    color: var(--tmavy-chleb);
+    margin-bottom: 10px;
+}
